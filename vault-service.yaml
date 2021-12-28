@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    com.myapp.description: vault server
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vault
+  name: vault
+spec:
+  ports:
+  - name: "8200"
+    port: 8200
+    targetPort: 8200
+  selector:
+    io.kompose.service: vault
+status:
+  loadBalancer: {}

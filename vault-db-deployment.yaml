@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    com.myapp.description: vault data store
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vault-db
+  name: vault-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: vault-db
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        com.myapp.description: vault data store
+        kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/vault: "true"
+        io.kompose.service: vault-db
+    spec:
+      containers:
+      - args:
+        - agent
+        - -server
+        - -bind=0.0.0.0
+        - -client
+        - 0.0.0.0
+        - -bootstrap-expect=1
+        image: consul:latest
+        imagePullPolicy: ""
+        name: vault-db
+        ports:
+        - containerPort: 8300
+        - containerPort: 8400
+        - containerPort: 8500
+        - containerPort: 53
+          protocol: UDP
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

@@ -1,6 +1,8 @@
 # Vault with Consul backend in Docker
 
+
 The code herein should not be considered production level by any means, but rather serve as a development or learning environment for using HashiCorp Vault.
+
 
 **What is Vault?**
 
@@ -13,5 +15,7 @@ The code herein should not be considered production level by any means, but rath
 ## References
 
 - HashiCorp Vault: [https://www.vaultproject.io](https://www.vaultproject.io)
+
 - HashiCorp Consul: [https://www.consul.io](https://www.consul.io)
+
 - curl reference: [https://curl.haxx.se](https://curl.haxx.se)
